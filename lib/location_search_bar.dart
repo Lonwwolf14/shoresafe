@@ -29,15 +29,30 @@ class _LocationSearchBarState extends State<LocationSearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: TextField(
-        controller: _controller,
-        decoration: InputDecoration(
-          hintText: 'Your location...',
-          border: InputBorder.none,
-          suffixIcon: IconButton(
-            icon: Icon(Icons.refresh),
-            onPressed: _getUserLocation,
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Material(
+        elevation: 5,
+        borderRadius: BorderRadius.circular(30),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(
+                    hintText: 'Your location...',
+                    border: InputBorder.none,
+                    icon: Icon(Icons.location_on, color: Colors.blue),
+                  ),
+                ),
+              ),
+              IconButton(
+                icon: Icon(Icons.refresh, color: Colors.blue),
+                onPressed: _getUserLocation,
+              ),
+            ],
           ),
         ),
       ),

@@ -18,11 +18,13 @@ class ShoresSafeApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight),
-          child: LocationSearchBar(),
+        body: Column(
+          children: [
+            SizedBox(height: 40),
+            LocationSearchBar(),
+            const Expanded(child: ShoresSafeHomePage()),
+          ],
         ),
-        body: const ShoresSafeHomePage(),
       ),
     );
   }

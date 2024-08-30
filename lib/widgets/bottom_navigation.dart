@@ -21,10 +21,6 @@ class BottomNavigation extends StatelessWidget {
           label: 'Home',
         ),
         NavigationDestination(
-          icon: Icon(Icons.search),
-          label: 'Search',
-        ),
-        NavigationDestination(
           icon: Icon(Icons.notifications),
           label: 'Alerts',
         ),

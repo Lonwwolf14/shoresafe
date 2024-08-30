@@ -1,0 +1,9 @@
+Beach Name,Swell Surge (m),Ocean Current (m/s),Storm Surge (m),Water Current (knots) ,Turbidity (NTU),Water Temperature (°C),Hydrocarbon (µg/L),Chlorophyll-a (µg/L),Wave Height (m)
+Marina Beach,0.62,0.21,0.4,0.6,6,29.4,0.02,1.7,0.76
+Juhu Beach,1.42,0.32,0.3,0.5,8,28.7,0.04,2,1.6
+Versova Beach,1.46,0.15,0.4,0.7,7,28.7,0.05,2.2,1.5
+Marine Drive,1.74,0.18,0.3,0.5,6,29.3,0.03,1.9,1.9
+Aksa Beach,1.9,0.15,0.3,0.6,7,28,0.04,2.1,2.18
+Dadar Beach,1.48,0.14,0.4,0.6,7,29.3,0.04,2,1.8
+Madh Island Beach,1.48,0.16,0.4,0.5,6,27,0.03,2.1,1.58
+Manori Beach,1.92,0.14,0.4,0.6,7,27,0.04,2.2,2.32

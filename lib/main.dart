@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'location_search_bar.dart';
 import 'screens/home_screen.dart';
+import 'screens/search_screen.dart';
 import 'screens/alerts_screen.dart';
 import 'widgets/bottom_navigation.dart';
-
 void main() => runApp(const ShoresSafeApp());
 
 class ShoresSafeApp extends StatelessWidget {
@@ -16,11 +17,16 @@ class ShoresSafeApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const ShoresSafeHomePage(),
+      home: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: LocationSearchBar(),
+        ),
+        body: const ShoresSafeHomePage(),
+      ),
     );
   }
 }
-
 class ShoresSafeHomePage extends StatefulWidget {
   const ShoresSafeHomePage({Key? key}) : super(key: key);
 
@@ -33,6 +39,7 @@ class _ShoresSafeHomePageState extends State<ShoresSafeHomePage> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
+    const SearchScreen(),
     const AlertsScreen(),
   ];
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
-import 'screens/search_screen.dart';
 import 'screens/alerts_screen.dart';
 import 'widgets/bottom_navigation.dart';
 
@@ -34,7 +33,6 @@ class _ShoresSafeHomePageState extends State<ShoresSafeHomePage> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const SearchScreen(),
     const AlertsScreen(),
   ];
 

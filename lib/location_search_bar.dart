@@ -1,61 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:geocoding/geocoding.dart';
 
 class LocationSearchBar extends StatefulWidget {
+  const LocationSearchBar({Key? key}) : super(key: key);
+
   @override
   _LocationSearchBarState createState() => _LocationSearchBarState();
 }
 
 class _LocationSearchBarState extends State<LocationSearchBar> {
-  TextEditingController _controller = TextEditingController();
-  
+  String _currentLocation = '';
+
   @override
   void initState() {
     super.initState();
-    _getUserLocation();
+    _getCurrentLocation();
   }
 
-  void _getUserLocation() async {
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
-    if (placemarks.isNotEmpty) {
-      Placemark place = placemarks[0];
+  Future<void> _getCurrentLocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
       setState(() {
-        _controller.text = "${place.street}, ${place.locality}, ${place.country}";
+        _currentLocation =
+            'Current Location: ${position.latitude}, ${position.longitude}';
+      });
+    } catch (e) {
+      setState(() {
+        _currentLocation = 'Unable to get current location';
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Material(
-        elevation: 5,
-        borderRadius: BorderRadius.circular(30),
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: _controller,
-                  decoration: InputDecoration(
-                    hintText: 'Your location...',
-                    border: InputBorder.none,
-                    icon: Icon(Icons.location_on, color: Colors.blue),
-                  ),
-                ),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            decoration: InputDecoration(
+              hintText: 'Search for a beach',
+              prefixIcon: const Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
               ),
-              IconButton(
-                icon: Icon(Icons.refresh, color: Colors.blue),
-                onPressed: _getUserLocation,
-              ),
-            ],
+            ),
           ),
         ),
-      ),
+        Text(_currentLocation),
+      ],
     );
   }
 }
